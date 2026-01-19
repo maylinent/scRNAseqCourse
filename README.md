@@ -6,4 +6,4 @@ SLURM scripts of the scRNAseq data analysis course 2026
 ## Content of repository
 | **File** | **Description** |
 |------|-------------|
-|file1 | File number 1|
+|STAR | STAR alignment|
