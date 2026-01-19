@@ -4,6 +4,6 @@ Scripts of the scRNAseq data analysis course 2026
 ## Subtitle
 ### Sub-subtitle
 ## Content of repository
-| ### File | ### Description |
+| **File** | **Description** |
 |------|-------------|
 |file1 | File number 1|
