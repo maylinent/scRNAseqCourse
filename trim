@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=trimmomatic
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=20G
+#SBATCH --time=4:00:00
+#SBATCH --output=/lisc/data/scratch/course/2025w300106/goeb/logs/trimmomatic.%j.log
+#SBATCH --error=/lisc/data/scratch/course/2025w300106/goeb/logs/trimmomatic.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=mayline.goeb@univie.ac.at
+
+### ENVIRONMENT
+module load Trimmomatic
+module list
+
+### VARIABLES
+wd="/lisc/data/scratch/course/2025w300106/goeb"
+outDir="$wd/results/trimmomatic"
+mkdir -p $outDir
+
+### EXECUTION
+trimmomatic PE -threads 4 -summary $outDir/SRR836052_summary.txt $wd/SRR836052_1.fastq $wd/SRR836052_2.fastq -baseout $outDir/SRR836052_ ILLUMINACLIP:/lisc/data/scratch/course/2025w300106/goeb/trim_adapters.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:31
