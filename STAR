@@ -13,5 +13,10 @@
 module load star
 module list
 
+### VARIABLES
+wd="/lisc/data/scratch/course/2025w300106/goeb/results/map"
+genomeDir="/lisc/data/scratch/course/2025w300106/goeb/Nv2_STAR"
+fastaFiles="/lisc/data/scratch/course/2025w300106/goeb/SRR33559462_1.fastq, /lisc/data/scratch/course/2025w300106/goeb/SRR24348399_2.fastq"
+
 ### EXECUTION
-STAR --genomeDir /lisc/data/scratch/course/2025w300106/goeb/Nv2_STAR --runThreadN 16 --readFilesIn /lisc/data/scratch/course/2025w300106/goeb/SRR33559462_1.fastq /lisc/data/scratch/course/2025w300106/goeb/SRR24348399_2.fastq --outFileNamePrefix /lisc/data/scratch/course/2025w300106/goeb/results/map/SRR24348399_Nv2_ --outSAMstrandField intronMotif --outSAMtype BAM SortedByCoordinate
+STAR --genomeDir $genomeDir --runThreadN 16 --readFilesIn $fastaFiles --outFileNamePrefix ${wd}/SRR24348399_Nv2_ --outSAMstrandField intronMotif --outSAMtype BAM SortedByCoordinate
