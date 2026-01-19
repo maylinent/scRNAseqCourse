@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH --job-name=featureCounts
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=2G
+#SBATCH --time=1:00:00
+#SBATCH --output=/lisc/data/scratch/course/2025w300106/goeb/logs/featureCounts.%j.log
+#SBATCH --error=/lisc/data/scratch/course/2025w300106/goeb/logs/featureCounts.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=mayline.goeb@univie.ac.at
+
+### ENVIRONMENT
+module load Subread
+module list
+
+### VARIABLES
+gtfFile="/lisc/data/scratch/course/2025w300106/goeb/Nv2_wnt4_pcna_fluo.gtf"
+bamFile="/lisc/data/scratch/course/2025w300106/goeb/results/map/SRR836052_Nv2Aligned_filtered.bam"
+
+### EXECUTION
+### Use -p for paired ends and count only 1 read per template
+### count only primary alignments
+### it's reverse stranded library
+featureCounts -a $gtfFile -p --countReadPairs -s 2 --primary -C -T 4 -o SRR836052.counts.tsv $bamFile
