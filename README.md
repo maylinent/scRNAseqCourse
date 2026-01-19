@@ -9,4 +9,4 @@ SLURM scripts of the scRNAseq data analysis course 2026, by Mayline Goëb
 |featureCounts | reads count of gtf file|
 |trim | trimmomatic trimming of raw data|
 |eggnog | eggnogmapping annotation|
-|cellranger | cellranger alignment |
+|CellRanger | cellranger alignment |
