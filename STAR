@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=STAR
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=20G
+#SBATCH --time=12:00:00
+#SBATCH --output=/lisc/data/scratch/course/2025w300106/goeb/logs/STAR.%j.log
+#SBATCH --error=/lisc/data/scratch/course/2025w300106/goeb/logs/STAR.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=mayline.goeb@univie.ac.at
+
+### ENVIRONMENT
+module load star
+module list
+
+### EXECUTION
+STAR --genomeDir /lisc/data/scratch/course/2025w300106/goeb/Nv2_STAR --runThreadN 16 --readFilesIn /lisc/data/scratch/course/2025w300106/goeb/SRR33559462_1.fastq /lisc/data/scratch/course/2025w300106/goeb/SRR24348399_2.fastq --outFileNamePrefix /lisc/data/scratch/course/2025w300106/goeb/results/map/SRR24348399_Nv2_ --outSAMstrandField intronMotif --outSAMtype BAM SortedByCoordinate
