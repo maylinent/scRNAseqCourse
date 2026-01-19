@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=eggnog
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=32G
+#SBATCH --time=12:00:00
+#SBATCH --output=/lisc/data/scratch/course/2025w300106/goeb/logs/eggnog.%j.log
+#SBATCH --error=/lisc/data/scratch/course/2025w300106/goeb/logs/eggnog.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=mayline.goeb@univie.ac.at
+
+### ENVIRONMENT
+module load eggnogmapper
+module list
+
+### VARIABLES
+fastaFile="/lisc/data/scratch/course/2025w300106/goeb/proteins.fasta"
+DIR="/lisc/data/scratch/course/2025w300106/goeb/results/eggnog"
+
+### EXECUTION
+### use go evidence experimental to annotate with experimental evidence only (excluding bioinformatic predictions)
+emapper.py -i $fastaFile --go_evidence experimental --output Nv2_proteins_annotated.xlsx --output_dir $DIR --cpu 16 --itype proteins -m diamond --evalue 1e-5
