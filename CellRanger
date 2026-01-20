@@ -15,6 +15,7 @@ module list
 
 ### VARIABLES
 wd="/lisc/data/scratch/course/2025w300106"
+od="/lisc/data/scratch/course/2025w300106/goeb/results/cellranger"
 indexDir="${wd}/common/NV2_fluo"
 fastqDir="${wd}/common/blastula.12h/run1,${wd}/common/blastula.12h/run2,${wd}/common/blastula.12h/run3"
 sample="89085"
@@ -22,8 +23,8 @@ sample="89085"
 id="blastula_12h"
 
 ###EXECUTION
-mkdir -p ${wd}
-cd ${wd}
+mkdir -p ${od}
+cd ${od}
 cellranger count --localcores 16 --transcriptome $indexDir --fastqs $fastqDir --id $id --sample $sample --create-bam false --force-cells 10000 --nosecondary
-## force-cells 10 000: count until reaching 10K cells
+## force-cells 10 000: count until reaching 10K cells (remove the background)
 ## nosecondary : Disable secondary analysis, e.g. clustering (relevant for bulkRNAseq but not sc)
