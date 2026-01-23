@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=cellranger
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=64G
+#SBATCH --time=12:00:00
+#SBATCH --output=/lisc/data/scratch/molevo/goeb/logs/blast.%j.log
+#SBATCH --error=/lisc/data/scratch/molevo/goeb/logs/blast.%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=mayline.goeb@univie.ac.at
+
+### ENVIRONMENT
+module load BLAST+
+module list
+
+### VARIABLES
+wd="/lisc/data/scratch/molevo/goeb"
+od="/lisc/data/scratch/molevo/goeb/blast_results"
+db="/lisc/data/scratch/molevo/goeb/Nv2_wnt4_pcna_fluo.fasta"
+QUERY="$wd/to_blast/FOX_T7.fasta"
+###EXECUTION
+blastn -query "$QUERY" -db $db -out "$od" -evalue 1e-5 -outfmt 6
