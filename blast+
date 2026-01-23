@@ -16,7 +16,7 @@ module list
 ### VARIABLES
 wd="/lisc/data/scratch/molevo/goeb"
 od="/lisc/data/scratch/molevo/goeb/Nv2_blastn/results/blast-results.tsv"
-db="/lisc/data/scratch/molevo/goeb/Nv2_blastn/Nv2_blastn_genome_db"
+db="/lisc/data/scratch/molevo/goeb/Nv2_blastn/Nv2_blastn_genome_db" ### database was made with Nv2 and makeblastdb command
 QUERY="$wd/to_blast/FOXA4_T7.fasta"
 ###EXECUTION
 blastn -query "$QUERY" -db $db -out "$od" -evalue 1e-5 -outfmt 6
