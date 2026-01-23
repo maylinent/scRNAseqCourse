@@ -15,8 +15,11 @@ module list
 
 ### VARIABLES
 wd="/lisc/data/scratch/molevo/goeb"
-od="/lisc/data/scratch/molevo/goeb/blast_results"
-db="/lisc/data/scratch/molevo/goeb/Nv2_wnt4_pcna_fluo.fasta"
-QUERY="$wd/to_blast/FOX_T7.fasta"
+od="/lisc/data/scratch/molevo/goeb/Nv2_blastn/results/blast-results.tsv"
+db="/lisc/data/scratch/molevo/goeb/Nv2_blastn/Nv2_blastn_genome_db"
+QUERY="$wd/to_blast/FOXA4_T7.fasta"
 ###EXECUTION
 blastn -query "$QUERY" -db $db -out "$od" -evalue 1e-5 -outfmt 6
+
+#extract the coordinates and look at the annotation on simrbase
+
