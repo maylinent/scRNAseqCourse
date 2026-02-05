@@ -19,4 +19,7 @@ outDir="$wd/results/trimmomatic"
 mkdir -p $outDir
 
 ### EXECUTION
+# Create adapters list in fasta format
+cat /lisc/opt/sw/software/Trimmomatic/0.40-Java-17/adapters/* > trim_adapters.fa
+# trim the adapters on the raw RNAseq data
 trimmomatic PE -threads 4 -summary $outDir/SRR836052_summary.txt $wd/SRR836052_1.fastq $wd/SRR836052_2.fastq -baseout $outDir/SRR836052_ ILLUMINACLIP:/lisc/data/scratch/course/2025w300106/goeb/trim_adapters.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:31
