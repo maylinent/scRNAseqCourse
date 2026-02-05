@@ -20,5 +20,9 @@ readsDir="/lisc/data/scratch/course/2025w300106/goeb"
 ### EXECUTION
 echo "Started job at $(date)"
 mkdir $outDir
+# check the reads quality with fastQC analysis
 fastqc $readsDir/SRR33559462_2.fastq $readsDir/SRR33559462_1.fastq -t 2 -f fastq -o $outDir
 echo "Job finished at $(date)"
+#remove all mapped reads with quality below 20
+# 12 is read unmapped + mate unmapped
+samtools view -b -@ 4 -o SRR836052_Nv2Aligned_filtered.bam -q 20 -G 12 -F 2 SRR836052_Nv2Aligned.sortedByCoord.out.bam
