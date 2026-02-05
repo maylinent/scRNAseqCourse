@@ -1,3 +1,8 @@
+#The STAR alignment bam file has to be indexed first
+module load samtools
+samtools index SRR836052_Nv2Aligned_filtered.bam
+#now the following slurm script can be used to count the features in the bam file
+
 #!/bin/bash
 #SBATCH --job-name=featureCounts
 #SBATCH --nodes=1
@@ -22,3 +27,4 @@ bamFile="/lisc/data/scratch/course/2025w300106/goeb/results/map/SRR836052_Nv2Ali
 ### count only primary alignments
 ### it's reverse stranded library
 featureCounts -a $gtfFile -p --countReadPairs -s 2 --primary -C -T 4 -o SRR836052.counts.tsv $bamFile
+# we got around 50% of mapped reads
