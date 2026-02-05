@@ -18,6 +18,7 @@ fastaFile="/lisc/data/scratch/course/2025w300106/goeb/proteins.fasta"
 DIR="/lisc/data/scratch/course/2025w300106/goeb/results/eggnog"
 
 ### EXECUTION
+#functional annotation with eggnog mapper
 ### use go evidence experimental to annotate with experimental evidence only (excluding bioinformatic predictions)
 emapper.py -i $fastaFile --go_evidence experimental --output Nv2_proteins_annotated.xlsx --output_dir $DIR --cpu 16 --itype proteins -m diamond --evalue 1e-5 --override
 ### override for overwriting directory/file
