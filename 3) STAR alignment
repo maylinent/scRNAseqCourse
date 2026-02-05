@@ -19,4 +19,7 @@ genomeDir="/lisc/data/scratch/course/2025w300106/goeb/Nv2_STAR"
 fastaFiles="/lisc/data/scratch/course/2025w300106/goeb/SRR33559462_1.fastq, /lisc/data/scratch/course/2025w300106/goeb/SRR24348399_2.fastq"
 
 ### EXECUTION
+#indexing
+STAR --runMode genomeGenerate --runThreadN 8 --genomeDir $genomeDir --genomeFastaFiles Nv2_wnt4_pcna_fluo.fasta 
+#alignment
 STAR --genomeDir $genomeDir --runThreadN 16 --readFilesIn $fastaFiles --outFileNamePrefix ${wd}/SRR24348399_Nv2_ --outSAMstrandField intronMotif --outSAMtype BAM SortedByCoordinate
