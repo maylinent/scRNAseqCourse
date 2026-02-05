@@ -1,3 +1,5 @@
+# Process 10x Genomics Gene Expression, Feature Barcode, and Immune Profiling data: a cellranger file needs to be created to be further processed on Rstudio
+
 #!/bin/bash
 #SBATCH --job-name=cellranger
 #SBATCH --nodes=1
