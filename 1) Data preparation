@@ -1,0 +1,18 @@
+### Data preparation ###
+# Download a genome
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/932/526/225/GCF_932526225.1_jaNemVect1.1/GCF_932526225.1_jaNemVect1.1_genomic.fna.gz #ncbi link
+# Here I used the Nv2 genome directly from the molevo shared file
+# Uncompress a .gz file
+pigz -d genome
+# Indexing: extract regions of the genome with their coordinates to facilitate navigating through the genome
+module load samtools
+samtools faidx GCA_033964005.1_Nvec200_genomic.fna CM066900.1:3500-4000
+#annotation file (.gtf) was also extracted from the molevo shared file
+# Load an SRA file of bulk RNAseq raw data
+module load SRA-Toolkit
+fasterq-dump SRR33559462
+# Load a command that runs after logout, in the background
+screen
+# press CTRL+A+D to leave the screen and logout
+# get transcripts and proteins fasta file from genome fasta file and its gtf
+gffread -g Nv2_wnt4_pcna_fluo.fasta -w transcripts.fasta -y proteins.fasta  Nv2_wnt4_pcna_fluo.gtf
